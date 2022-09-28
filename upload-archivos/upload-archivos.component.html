@@ -1,0 +1,44 @@
+<div id="contenedor">
+    <div class="col">
+        
+        <select #teams (change)="onSelected(teams.value)">
+                <option default>Seleccione un usuario</option>
+                <option *ngFor="let usuario of usuarios"  value="{{usuario.id_usuarios}}" >{{usuario.name}}</option>
+            
+        </select>
+
+    <div>
+        <form (ngSubmit)="upload()">
+        
+            <br><br>
+            <input type="file" accept="application/pdf,application/msword,image/jpg,image/png" (change)="seleccionarArchivo($event)">
+            <br><br>
+            <button class="btn btn-primary"> SUBIR ARCHIVO </button>
+          </form>
+    </div>
+    </div>
+    
+    <div class="col2">
+            
+        <select #TipoArchivo (change)="onSelected2(TipoArchivo.value)">
+                <option default>Seleccione un tipo de archivo </option>
+                <option value="Identificación oficial" >Identificación oficial</option>
+                <option value="Comprobante de domicilio" >Comprobante de domicilio</option>
+                <option value="Escritura" >Escritura</option>
+                <option value="Carta poder" >Carta poder</option>
+                <option value="Estado de cuenta bancario" >Estado de cuenta bancario</option>
+        </select>
+
+        <br><br>
+        <div *ngFor="let usuarioArchivo of usuarioArchivos">
+            <p *ngIf=" usuarioArchivo.USUARIO_ID == Id_User" >{{usuarioArchivo.Nombre_Archivo}} - {{usuarioArchivo.Tipo_Archivo}} </p>
+         </div>
+    </div>
+    
+    
+    
+    
+    
+      
+</div>
+
